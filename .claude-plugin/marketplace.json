@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-marketplace.json",
+  "name": "leland-skills",
+  "description": "Leland's library of AI skills, organized by function and tagged by industry.",
+  "owner": {
+    "name": "Leland",
+    "url": "https://www.joinleland.com"
+  },
+  "plugins": []
+}
