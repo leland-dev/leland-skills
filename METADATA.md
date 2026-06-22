@@ -7,8 +7,7 @@ Every skill's `SKILL.md` opens with YAML frontmatter. **Standard fields** are re
 | Field | Required | Notes |
 |-------|----------|-------|
 | `name` | yes | kebab-case, matches the folder name. Also becomes the `/command`. |
-| `description` | yes | What it does + when to use it. This is the auto-invocation trigger. Front-load the use case. Combined with `when_to_use`, capped ~1,536 chars. |
-| `when_to_use` | optional | Extra trigger phrases or example requests. |
+| `description` | yes | What it does **and** when to use it. This is the auto-invocation trigger, so be specific and a little pushy about the contexts that should fire it (name tasks, phrases, file types). Claude tends to under-trigger skills, so a passive description means it won't get used. Put *all* "when to use" detail here, not in a separate field or the body. ~1,536 char cap. |
 | `allowed-tools` | optional | Space-separated pre-approved tools, e.g. `Read Grep Bash(git *)`. |
 | `disable-model-invocation` | optional | `true` for side-effectful skills that should be manual-only. |
 
