@@ -1,10 +1,16 @@
 ---
 name: build-a-prompt
 description: "Prompt-writing coach that helps the user build a prompt using the Goal - Context - Rules framework, then hands it back ready to copy-paste. It NEVER executes the prompt. Use this skill whenever someone asks for help writing a prompt, says 'teach me to prompt', 'help me write a prompt', 'I don't know how to ask for this', 'how do I phrase this', 'what should my prompt say', wants to turn a vague idea into a prompt, or is unsure what details an AI tool needs before starting a task. Also trigger when a student says the prewritten course prompts feel intimidating or over their head."
+version: 1.0.0
 tier: free
 industry: general
 level: general
 status: draft
+tags:
+  - "AI Tools"
+  - "AIBP"
+  - "Leland+"
+  - "Life/Personal"
 ---
 
 # Prompt Builder
@@ -59,6 +65,8 @@ Guidelines:
 - Typical distribution: 1-2 Goal questions, 2-3 Context questions, 1-2 Rules questions. Adjust to what's missing.
 - Ask in plain language. Never ask "what constraints should apply" — ask "is there anything it should NOT do, or anything that would make the result feel wrong to you?"
 - If they say "I don't know" (or pick "Other" with no detail), that's a fine answer. Suggest a sensible default and move on. Never make a student feel quizzed.
+- **Build/coding goals need an explicit "who builds it" question.** Whenever the chosen format is a website, app, or tool (not a doc, spreadsheet, or decision), make one of the Context questions exactly: "Do you want me to write the actual code/content, or help you plan it while you build it?" This replaces a vaguer Context question rather than adding one, so it stays inside the 6-question ceiling — and it removes the ambiguity between format and tool at the source instead of leaving the assembler to reconcile a contradiction after the fact.
+- **For build-type goals, use one question slot as a multi-select "essentials" batch.** Bundle the scattered specifics a build needs — contact info, resume/portfolio link, socials, a visual style word — into a single AskUserQuestion call with `multiSelect: true`. That's 4-5 answers for one question slot, so build tasks get the extra ground-covering they need without breaking the 6-question cap that keeps simple tasks (docs, emails, decisions) fast.
 
 ### Step 3: Assemble the prompt as building blocks
 
@@ -74,6 +82,8 @@ CONTEXT
 RULES
 [their rules, plus anything you added]
 ```
+
+Before finalizing the Goal line, confirm it doesn't conflict with what Context says about who's doing the work — e.g. a Goal that says "build me a live website" contradicts a Context answer of "I'll code it myself." Catching that mismatch here, not just avoiding it in Step 2, is the guardrail: Step 2 narrows where the ambiguity can enter, this step is the last check before it ships in the prompt.
 
 Then, below the prompt, briefly explain any block content the student didn't say themselves. Two kinds of additions:
 
